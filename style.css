@@ -1,55 +1,495 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background: linear-gradient(to right, #2196F3, #21CBF3);
-  color: #fff;
-  text-align: center;
+*{
+    margin: 10;
+    padding: 10;
+    font-family: 'Arial', sans-serif;
+    
 }
 
-header {
-  background: rgba(0, 0, 0, 0.7);
-  padding: 20px;
+
+
+nav{
+    display: flex;
+    position: sticky;
+    top: 0;
+    
+    align-items: center;
+    
+
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    padding: 0;
+
+}
+
+nav .Sign_up {
+    border: 10px solid #007eed;
+    border-radius: 50px;
+    background-color: #007eed;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+nav .tt {
+    border: 10px solid #ffffff;
+    border-radius: 50px;
+    background-color: #ffffff;
+    font-weight: bold;
+}
+
+nav .Sign_in {
+    border: 10px solid #ffffff;
+    border-radius: 50px;
+    background-color: #ffffff;
+    font-weight: bold;
 }
 
 nav ul {
-  list-style: none;
-  padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    right: 20px;
+    gap: 20px;
+    font-weight: bold;
+    
 }
 
-nav ul li {
-  display: inline;
-  margin: 0 15px;
+nav img {
+    width: 50px;
+    height: 50px;
+    margin-left: 0; /* Ensure no extra margin on the left */
 }
 
-nav ul li a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 18px;
-  transition: 0.3s;
+.Container {
+    
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    
 }
 
-nav ul li a:hover {
-  color: #FFEB3B;
+.Container h1 {
+
+    text-align: center;
+    font-weight: 900;
+    font-size: 40px;
+    color: rgb(0, 0, 0);
 }
 
-section {
-  padding: 50px;
+.Container h2 {
+
+    
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    padding-bottom: 15px;
 }
 
-.project {
-  background: rgba(255, 255, 255, 0.2);
-  padding: 20px;
-  margin: 20px;
-  border-radius: 10px;
-  transition: transform 0.3s ease;
+.Container img {
+    width: 650px;
+    height: 500px;
+    margin-top: 20px; /* Optional: Add margin for spacing */
+    border-radius: 100px;
+    padding: 20px;
+
 }
 
-.project:hover {
-  transform: scale(1.05);
+
+
+.Container .Producten {
+    margin-bottom: 20px;
+    width: 100%;
+    height: 50px;
+    border-radius: 40px;
+    background-color: #ffffff;
+    border: #000000 solid 1px;
+    font-size: 15px;
+    font-weight: bold;
+    transition: all 0.5s ease-in-out; /* Apply transition to the default state */
 }
 
-footer {
-  background: rgba(0, 0, 0, 0.7);
-  padding: 10px;
+.Container .Producten:hover {
+    background-color: #007eed;
+    color: #ffffff;
+    cursor: pointer;
 }
+
+.Container2 {
+    padding-top: 40px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.Container2 video {
+    width: 350px;
+    height: auto;
+    margin-top: 20px; /* Optional: Add margin for spacing */
+    border-radius: 100px;
+    padding: 20px;
+}
+
+.Container2 .vidS {
+    width: 300px;
+    height: auto;
+    margin-top: 20px; /* Optional: Add margin for spacing */
+    border-radius: 100px;
+    padding: 20px;
+    opacity: 0.5; /* Set initial opacity to 0.5 */
+    transition: all 0.5s ease-in-out;
+}
+
+.Container2 .vidS:hover {
+    opacity: 1; /* Set opacity to 1 on hover */
+    cursor: pointer;
+    
+}
+
+
+footer, .footerOnderdelen {
+    position: fixed; /* Fix the footer to the bottom of the viewport */
+    bottom: 0; /* Align it to the bottom */
+    left: 50%; /* Center it horizontally */
+    transform: translateX(-50%); /* Adjust for the footer's width */
+    width: auto; /* Allow the footer to size dynamically */
+    text-align: center; /* Center the text inside the footer */
+    background-color: rgb(255, 255, 255); /* Optional: Set a background color */
+    padding: 10px 20px; /* Add some padding for spacing */
+    font-weight: bold; /* Make the text bold */
+    z-index: 1000; /* Ensure it stays on top of other elements */
+}
+
+.terug{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 50%;
+    position: absolute;
+    top: 12px;
+    left: 60px;
+    border-radius: 20px;
+    border: #000000 solid 1px;
+    background-color: #ffffff;
+    font-size: 15px;
+    font-weight: bold;
+    transition: all 0.5s ease-in-out; /* Apply transition to the default state */
+    width: 100px;
+    height: 35px;
+    
+}
+
+.terug:hover{
+    background-color: #84c8ff;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.bmw_logo {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    width: 400px;
+    height: auto;
+    margin: 0 auto; /* Ensure it's centered if the container is block-level */
+}
+
+
+
+.info{
+    border: #000000 solid 1px;
+    background-color: #ffffff;
+    font-size: 15px;
+    font-weight: bold;
+    transition: all 0.5s ease-in-out; /* Apply transition to the default state */
+    width: 100px;
+    height: 35px;
+    border-radius: 20px;
+    position: absolute;
+}
+
+#Uitlaat{
+    left: 41%;
+    bottom: 290px;
+    opacity: 0.5; /* Set initial opacity to 0.5 */
+    transition: all 0.5s ease-in-out;
+}
+
+#Uitlaat:hover{
+    opacity: 1; /* Set opacity to 1 on hover */
+    cursor: pointer;
+}
+
+#Zadel{
+    left: 41.6%;
+    bottom: 555px;
+    opacity: 0.5; /* Set initial opacity to 0.5 */
+    transition: all 0.5s ease-in-out;
+}
+
+#Zadel:hover{
+    opacity: 1; /* Set opacity to 1 on hover */
+    cursor: pointer;
+}
+
+#Spiegels{
+    left: 62%;
+    bottom: 610px;
+    opacity: 0.5; /* Set initial opacity to 0.5 */
+    transition: all 0.5s ease-in-out;
+}
+
+#Spiegels:hover{
+    opacity: 1; /* Set opacity to 1 on hover */
+    cursor: pointer;
+}
+
+#Remmen{
+    left: 67%;
+    bottom: 337px;
+    opacity: 0.5; /* Set initial opacity to 0.5 */
+    transition: all 0.5s ease-in-out;
+}
+
+#Remmen:hover{
+    opacity: 1; /* Set opacity to 1 on hover */
+    cursor: pointer;
+}
+
+#Wielen{
+    left: 26%;
+    bottom: 337px;
+    opacity: 0.5; /* Set initial opacity to 0.5 */
+    transition: all 0.5s ease-in-out;
+}
+
+#Wielen:hover{
+    opacity: 1; /* Set opacity to 1 on hover */
+    cursor: pointer;
+}
+
+.bmw {
+    display: block;
+    width: 900px; /* Fixed width for the image */
+    height: auto;
+    position: relative; /* Make this the reference point for child elements */
+    margin: 0 auto; /* Center the image horizontally */
+    transform: translateY(-800px); /* Start off-screen at -800px */
+    animation: slideUp 1.5s ease-in-out forwards; /* Apply slide-up animation */
+}
+
+.moving-image {
+    display: block;
+    width: 900px;
+    height: auto;
+    margin: 0 auto;
+    position: absolute;
+    left: 500px;
+    /* top: 400px; */
+    animation: slideIn 2s ease-out forwards;
+    overflow: hidden;
+}
+
+@keyframes slideIn {
+    from {
+        
+       
+        
+        opacity: 1;
+    }
+    to {
+        left: 60%;
+        width: 1200;
+        
+        opacity: 1;
+    }
+}
+
+/* Slide-up animation */
+@keyframes slideUp {
+    from {
+        transform: translateY(160px); /* Start off-screen */
+    }
+    to {
+        transform: translateY(0); /* End at the current position */
+    }
+}
+
+.Container-Wielen{
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    margin: 0;
+    width: 300px;
+    height: auto;
+    position: absolute;
+    left: 35%; /* Center horizontally */
+    top: 66%; /* Center vertically */
+    transform: translate(-50%, -50%); /* Adjust for both horizontal and vertical centering */
+    z-index: 10; /* Ensure it is above other elements */
+    animation: slideInSecond 2s ease-out forwards;
+}
+
+@keyframes slideInSecond {
+    from {
+        
+       
+        left: -400px;
+        opacity: 1;
+    }
+    to {
+        left: 35%;
+        width: 1200;
+        
+        opacity: 1;
+    }
+}
+
+/* Hide scrollbars for the entire page */
+body {
+    overflow: hidden; /* Disables scrolling */
+}
+
+/* Alternatively, hide scrollbars but allow scrolling */
+
+
+
+
+#wiel1{
+    width: 265px;
+    position: absolute;
+    left: -350px;
+    opacity: 0.7;
+}
+#wiel2{
+    width: 350px;
+    position: absolute;
+}
+#wiel3{
+    width: 210px;
+    left: 400px;
+    position: absolute;
+    opacity: 0.7;
+}
+
+.bmwIndex {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    width: 900px;
+    height: auto;
+    position: absolute;
+    top: 70%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust for both horizontal and vertical centering */
+    margin: 0 auto; /* Ensure it's centered if the container is block-level */
+    z-index: 10; /* Ensure it stays above other elements */
+}
+
+.menu {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    flex-direction: column;
+    row-gap: 20px; /* Add vertical spacing between buttons */
+}
+
+.menu button {
+    margin-top: 20px;
+    width: 250px;
+    height: 50px;
+    border-radius: 20px;
+    border: #000000 solid 1px;
+    background-color: #ffffff;
+    font-size: 15px;
+    font-weight: bold;
+    transition: all 0.5s ease-in-out; /* Apply transition to the default state */
+}
+
+.menu button:hover {
+    background-color: #007eed;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.menu2 {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    flex-direction: column;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    row-gap: 40px;
+    z-index: 10;
+    opacity: 1;
+    animation: fadeOut 1s ease-in-out forwards; /* Trigger fade-out on load */
+    animation-delay: 0.1s; /* Optional: delay to show briefly before fading */
+}
+
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        pointer-events: none; /* Prevent interaction after fade */
+    }
+}
+
+
+.menu2 button {
+    margin-top: 0; /* Remove unnecessary margin */
+    width: 250px;
+    height: 50px;
+    border-radius: 20px;
+    border: #000000 solid 1px;
+    background-color: #ffffff;
+    font-size: 15px;
+    font-weight: bold;
+    transition: opacity 0.5s ease-in-out; /* Apply transition to the default state */
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0; /* Start fully transparent */
+    }
+    to {
+        opacity: 0.8; /* End fully visible */
+    }
+}
+
+/* Apply fade-in to all parts */
+#Uitlaat,
+#Zadel,
+#Spiegels,
+#Remmen,
+#Wielen {
+    opacity: 0; /* Start fully transparent */
+    animation: fadeIn 1.5s ease-in-out forwards; /* Apply fade-in animation */
+}
+
+/* Optional: Add delays for staggered fade-in */
+#Uitlaat {
+    animation-delay: 0.2s; /* Delay fade-in for 0.2 seconds */
+}
+
+#Zadel {
+    animation-delay: 0.4s; /* Delay fade-in for 0.4 seconds */
+}
+
+#Spiegels {
+    animation-delay: 0.6s; /* Delay fade-in for 0.6 seconds */
+}
+
+#Remmen {
+    animation-delay: 0.8s; /* Delay fade-in for 0.8 seconds */
+}
+
+#Wielen {
+    animation-delay: 1s; /* Delay fade-in for 1 second */
+}
+
+
