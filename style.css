@@ -492,4 +492,59 @@ body {
     animation-delay: 1s; /* Delay fade-in for 1 second */
 }
 
+.loggedIn_msg {
+    position: absolute;
+    left: 46%;
+    top: 1%;
+    background-color: #007eed;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    z-index: 2000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    animation: fadeOut 2s ease-in-out forwards;
+} 
 
+.logout_btn{
+    position: static;     /* Remove absolute so it sits in the flex row */
+    width: 100px;
+    background-color: #007eed;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    z-index: 2000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    
+}
+.container_loggedIn{
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    left: 10px;
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    z-index: 10;
+}
+.nav_invis{
+    opacity: 0;
+
+}
+
+.not_invis{
+    opacity: 1;
+}
+
+.user_name{
+    background: none;
+    border-radius: 10px;
+    color: #000000;
+    font-weight: bold;
+    padding: 10px 20px;
+    position: static;     /* Remove absolute so it sits in the flex row */
+    width: auto;
+    z-index: 2000;
+}
