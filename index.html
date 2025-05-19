@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio | Nathan Posthumus</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav>
+  <ul>
+    <li class="active"><a href="index.html">Home</a></li>
+    <li><a href="about.html">View My Work</a></li>
+    <li><a href="downloads/Nathan_Posthumus_CV.pdf" download>Download CV</a></li>
+    <li><a href="contact.html">Let's Connect</a></li>
+    <div class="theme-toggle">
+  <label class="switch">
+    <input type="checkbox" id="themeToggle">
+    <span class="slider round"></span>
+  </label>
+</div>
+
+  </ul>
+</nav>
+
+
+  <div class="background"></div>
+
+  <div class="header">
+    <h1 class="typing-text"><span id="typewriter"></span><span class="cursor">|</span></h1>
+    <h2>Welcome to My Portfolio</h2>
+    <p>
+      Hi, I'm <b>Nathan Posthumus</b>, a software developer with a passion
+      for creating innovative solutions. Explore my work and let's connect!
+    </p>
+  </div>
+
+  <img src="images/index.png" alt="Developer Illustration" class="index-image" />
+
+  <script>
+    const text = "Software Developer";
+    const typewriter = document.getElementById("typewriter");
+    const cursor = document.querySelector(".cursor");
+
+    let index = 0;
+    function type() {
+      if (index < text.length) {
+        typewriter.textContent += text.charAt(index);
+        index++;
+        setTimeout(type, 100);
+      }
+    }
+    type();
+  </script>
+
+  <script>
+  const toggle = document.getElementById('themeToggle');
+  const body = document.body;
+
+  // Load preference
+  if (localStorage.getItem('theme') === 'light') {
+    toggle.checked = true;
+    body.classList.add('light-mode');
+  }
+
+  toggle.addEventListener('change', () => {
+    body.classList.toggle('light-mode');
+    localStorage.setItem('theme', body.classList.contains('light-mode') ? 'light' : 'dark');
+  });
+</script>
+
+</body>
+</html>

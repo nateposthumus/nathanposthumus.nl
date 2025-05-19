@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact | Nathan Posthumus</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">View My Work</a></li>
+      <li><a href="downloads/Nathan_Posthumus_CV.pdf" download>Download CV</a></li>
+      <li class="active"><a href="contact.html">Let's Connect</a></li>
+    </ul>
+  </nav>
+
+  <div class="header">
+    <h1>Let's Connect</h1>
+    <p>You can reach me at:</p>
+    <ul>
+      <li>📧 Email: nathan@example.com</li>
+      <li>💼 LinkedIn: <a href="#">linkedin.com/in/nathan</a></li>
+      <li>📷 GitHub: <a href="#">github.com/nathanposthumus</a></li>
+    </ul>
+  </div>
+  <script>
+  const toggle = document.getElementById('themeToggle');
+  const body = document.body;
+
+  // Load preference
+  if (localStorage.getItem('theme') === 'light') {
+    toggle.checked = true;
+    body.classList.add('light-mode');
+  }
+
+  toggle.addEventListener('change', () => {
+    body.classList.toggle('light-mode');
+    localStorage.setItem('theme', body.classList.contains('light-mode') ? 'light' : 'dark');
+  });
+</script>
+
+</body>
+</html>
