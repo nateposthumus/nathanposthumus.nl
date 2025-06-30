@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Het Woordspel</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="WoordSpel">
+    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class'
+        }
+    </script>
+</head>
+<body class="bg-gradient-to-br from-yellow-100 via-blue-100 to-yellow-200 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 min-h-screen flex flex-col transition-colors duration-300">
+    <header class="relative flex flex-col items-center justify-center py-8 px-2 bg-gradient-to-b from-blue-900 via-blue-800 to-blue-700 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 shadow-2xl rounded-b-3xl mb-4 transition-colors duration-300 w-full">
+        <div class="lang-switch flex gap-4 justify-center items-center mb-4 animate-fade-in-down">
+            <button class="lang-btn px-4 py-2 rounded-full font-bold text-lg shadow-md bg-white/80 text-blue-900 border-2 border-transparent hover:bg-yellow-400 hover:text-blue-900 focus:outline-none focus:ring-4 focus:ring-yellow-300 transition-all duration-200" data-lang="nl">🇳🇱 NL</button>
+            <button class="lang-btn px-4 py-2 rounded-full font-bold text-lg shadow-md bg-white/80 text-blue-900 border-2 border-transparent hover:bg-yellow-400 hover:text-blue-900 focus:outline-none focus:ring-4 focus:ring-yellow-300 transition-all duration-200" data-lang="en">🇬🇧 EN</button>
+            <button class="lang-btn px-4 py-2 rounded-full font-bold text-lg shadow-md bg-white/80 text-blue-900 border-2 border-transparent hover:bg-yellow-400 hover:text-blue-900 focus:outline-none focus:ring-4 focus:ring-yellow-300 transition-all duration-200" data-lang="fr">🇫🇷 FR</button>
+            <button class="lang-btn px-4 py-2 rounded-full font-bold text-lg shadow-md bg-white/80 text-blue-900 border-2 border-transparent hover:bg-yellow-400 hover:text-blue-900 focus:outline-none focus:ring-4 focus:ring-yellow-300 transition-all duration-200" data-lang="de">🇩🇪 DE</button>
+        </div>
+        <h1 id="game-title" class="cursor-pointer text-5xl sm:text-6xl font-extrabold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-200 drop-shadow-lg animate-fade-in-down mb-2">Het Woordspel</h1>
+        <div class="w-24 h-1 rounded-full bg-gradient-to-r from-yellow-400 via-yellow-200 to-blue-300 opacity-80 mt-2"></div>
+    </header>
+
+    <main id="game-container" class="flex-grow flex flex-col items-center justify-center" style="margin-top: -100px;">
+    <div class="flex flex-col items-center w-full max-w-lg mx-auto">
+        <div id="score-bar" class="flex items-center justify-center w-full mb-1 hidden">
+            <span class="text-blue-900 dark:text-yellow-200 font-bold text-lg tracking-wide">Score:</span>
+            <span id="current-score" class="ml-2 text-blue-900 dark:text-yellow-200 font-extrabold text-lg">0</span>
+        </div>
+        <div id="high-score" class="hidden flex items-center gap-2 px-6 py-2 rounded-xl bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-500 dark:from-yellow-700 dark:via-yellow-800 dark:to-yellow-900 shadow-lg text-blue-900 dark:text-yellow-200 font-extrabold text-xl tracking-wide mb-4 mt-2 animate-fade-in self-center">
+            <span class="text-2xl">🏆</span>
+            <span id="high-score-text"></span>
+        </div>
+    </div>
+    <section id="start-screen" class="screen bg-white/90 dark:bg-gray-900/90 rounded-3xl shadow-2xl p-10 w-full max-w-lg mx-auto flex flex-col justify-center items-center transition-all duration-300 animate-fade-in backdrop-blur-md active mt-2">
+        <div class="main-content flex flex-col items-center space-y-8">
+            <p id="start-letter" class="display-letter text-8xl font-extrabold text-yellow-400 mb-2 transition-all duration-300 animate-bounce drop-shadow-lg"></p>
+            <div class="buttons flex gap-6 space-x-0 space-y-0">
+                <button id="rules-btn" class="btn bg-gradient-to-r from-blue-200 to-blue-400 text-blue-900 font-bold rounded-xl px-6 py-3 shadow-lg hover:from-blue-300 hover:to-blue-500 hover:scale-105 transition-all duration-200">Spelregels</button>
+                <button id="start-game-btn" class="btn primary bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-500 text-blue-900 font-bold rounded-xl px-6 py-3 shadow-lg hover:from-yellow-400 hover:to-yellow-600 hover:scale-105 transition-all duration-200">Start Spel</button>
+            </div>
+            <p class="promo-text text-lg text-blue-900 font-semibold italic animate-fade-in-up">Test je woordenschat en daag je vrienden uit!</p>
+        </div>
+    </section>
+    <section id="setup-screen" class="screen bg-white/90 dark:bg-gray-900/90 rounded-3xl shadow-2xl p-10 w-full max-w-lg mx-auto flex flex-col justify-center items-center transition-all duration-300 animate-fade-in backdrop-blur-md">
+        <h2 class="text-2xl font-extrabold mb-6 text-blue-900">Aantal Spelers</h2>
+        <div class="player-count-selection flex flex-wrap justify-center gap-6 mt-2">
+            <button class="player-count-btn btn bg-gradient-to-r from-blue-200 to-blue-400 text-blue-900 font-bold rounded-xl px-6 py-3 shadow-lg hover:from-blue-300 hover:to-blue-500 hover:scale-105 transition-all duration-200" data-players="1">1 Speler</button>
+            <button class="player-count-btn btn bg-gradient-to-r from-blue-200 to-blue-400 text-blue-900 font-bold rounded-xl px-6 py-3 shadow-lg hover:from-blue-300 hover:to-blue-500 hover:scale-105 transition-all duration-200" data-players="2">2 Spelers</button>
+            <button class="player-count-btn btn bg-gradient-to-r from-blue-200 to-blue-400 text-blue-900 font-bold rounded-xl px-6 py-3 shadow-lg hover:from-blue-300 hover:to-blue-500 hover:scale-105 transition-all duration-200" data-players="3">3 Spelers</button>
+            <button class="player-count-btn btn bg-gradient-to-r from-blue-200 to-blue-400 text-blue-900 font-bold rounded-xl px-6 py-3 shadow-lg hover:from-blue-300 hover:to-blue-500 hover:scale-105 transition-all duration-200" data-players="4">4 Spelers</button>
+        </div>
+    </section>
+    <section id="gameplay-screen" class="screen hidden bg-white/90 dark:bg-gray-900/90 rounded-3xl shadow-2xl p-10 w-full max-w-lg mx-auto flex flex-col justify-center items-center transition-all duration-300 animate-fade-in backdrop-blur-md">
+        <p id="current-player-display" class="player-turn-text text-2xl font-bold text-blue-900 dark:text-yellow-300 mb-2 animate-fade-in-down">Speler 1's Beurt!</p>
+        <p id="game-category" class="category-display important text-xl font-extrabold bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-200 dark:from-yellow-700 dark:via-yellow-800 dark:to-yellow-900 text-blue-900 dark:text-yellow-200 rounded-xl px-5 py-2 inline-block mb-2 shadow animate-fade-in-down">Muziekgenre</p>
+        <p id="game-letter" class="display-letter small text-5xl font-extrabold text-yellow-400 dark:text-yellow-300 mb-2 drop-shadow-lg animate-bounce"></p>
+        <div class="flex flex-col items-center w-full mb-2">
+            <p id="timer-display" class="timer text-3xl font-bold text-yellow-400 dark:text-yellow-200 mb-1 transition-all duration-200 animate-fade-in">14</p>
+            <div class="w-full max-w-xs h-4 bg-yellow-100 dark:bg-gray-800 rounded-full overflow-hidden shadow-inner">
+                <div id="timer-bar" class="h-full bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 dark:from-yellow-700 dark:via-yellow-800 dark:to-yellow-900 transition-all duration-200" style="width: 46.6667%;"></div>
+            </div>
+        </div>
+        <!-- Answer input and submit button removed, replaced with Next Question button -->
+        <button id="next-question-btn" class="btn primary bg-gradient-to-r from-blue-200 to-blue-400 dark:from-blue-900 dark:to-blue-700 text-blue-900 dark:text-yellow-200 font-bold rounded-xl px-6 py-3 shadow-lg hover:from-blue-300 hover:to-blue-500 hover:scale-105 transition-all duration-200 mt-4">Volgende Speler</button>
+        <button id="hint-btn" style="display: inline-block;" class="btn bg-gradient-to-r from-blue-200 to-blue-400 text-blue-900 font-bold rounded-xl px-4 py-2 shadow hover:from-blue-300 hover:to-blue-500 hover:scale-105 transition-all duration-200 mt-2">❤️ Gratis Hart</button>
+        <p id="game-message" class="game-message text-lg font-bold text-red-600 dark:text-red-400 min-h-[28px] mt-2 animate-fade-in-up"></p>
+    </section>
+    <section id="jail-screen" class="screen bg-white/90 dark:bg-gray-900/90 rounded-3xl shadow-2xl p-10 w-full max-w-lg mx-auto flex flex-col justify-center items-center transition-all duration-300 animate-fade-in backdrop-blur-md">
+        <div class="main-content flex flex-col items-center gap-8">
+            <p id="jail-message" class="display-message text-3xl font-bold text-red-600 mb-4 animate-fade-in-down"></p>
+            <button id="next-player-from-jail-btn" class="btn primary bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-500 text-blue-900 font-bold rounded-xl px-6 py-3 shadow-lg hover:from-yellow-400 hover:to-yellow-600 hover:scale-105 transition-all duration-200">Volgende Speler</button>
+        </div>
+    </section>
+    <div id="rules-popup" class="popup fixed inset-0 bg-black bg-opacity-60 z-50 flex justify-center items-center hidden animate-fade-in">
+        <div class="popup-content bg-gradient-to-br from-white/95 via-yellow-50/90 to-blue-100/90 dark:from-gray-900/95 dark:via-gray-800/90 dark:to-gray-900/90 rounded-3xl shadow-2xl p-8 w-full max-w-xl text-lg animate-fade-in-up border-4 border-yellow-200 dark:border-gray-800 flex flex-col items-center">
+            <h2 class="text-center text-blue-900 dark:text-yellow-300 font-extrabold text-3xl mb-6 drop-shadow-lg tracking-wide">Spelregels</h2>
+            <p class="mb-4 text-blue-900 dark:text-yellow-200 text-lg font-medium text-center">
+                Welkom bij <span class="font-bold text-yellow-500">Het Woordspel</span>! Zo werkt het:
+            </p>
+            <ol class="list-decimal bg-white/80 dark:bg-gray-800/80 rounded-xl px-6 py-4 mb-6 text-blue-900 dark:text-yellow-100 font-medium space-y-2 shadow">
+                <li><span class="font-semibold text-yellow-600 dark:text-yellow-300">Begin</span> het spel en kies het aantal spelers (1-4).</li>
+                <li>Er verschijnt een <span class="font-semibold text-blue-700 dark:text-yellow-300">willekeurige startletter</span> en een <span class="font-semibold text-blue-700 dark:text-yellow-300">categorie</span>.</li>
+                <li>De huidige speler moet binnen <span class="font-semibold text-yellow-600 dark:text-yellow-300">30 seconden</span> een woord typen dat bij de categorie past <span class="font-bold text-blue-700 dark:text-yellow-300">én</span> begint met de gegeven startletter.</li>
+                <li>Druk op <span class="font-semibold text-yellow-600 dark:text-yellow-300">'Verzenden'</span> of de <span class="font-semibold text-yellow-600 dark:text-yellow-300">Enter-toets</span> om je antwoord in te dienen.</li>
+                <li>Als je het woord op tijd indient, gaat de beurt naar de volgende speler.</li>
+                <li>Als je geen woord indient, of de tijd is om, dan <span class="font-semibold text-red-600 dark:text-red-400">ga je naar de gevangenis</span> en de beurt gaat naar de volgende speler.</li>
+                <li>Het spel gaat door totdat er een winnaar is (of tot jullie besluiten te stoppen!).</li>
+            </ol>
+            <button id="close-rules-btn" class="btn bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-500 text-blue-900 font-bold rounded-xl px-8 py-3 mx-auto block mt-2 shadow-lg hover:from-yellow-400 hover:to-yellow-600 hover:scale-105 transition-all duration-200 text-lg">Sluiten</button>
+        </div>
+    </div>
+</main>
+    <!-- Dark/Light mode toggle button -->
+    <button id="theme-toggle-btn" class="fixed bottom-6 right-6 z-50 bg-gradient-to-br from-yellow-300 via-yellow-400 to-yellow-500 dark:from-gray-700 dark:via-gray-800 dark:to-gray-900 text-blue-900 dark:text-yellow-200 rounded-full shadow-xl p-4 flex items-center justify-center hover:scale-110 transition-all duration-200 border-2 border-yellow-200 dark:border-gray-700">
+        <span id="theme-toggle-icon" class="text-2xl">🌙</span>
+    </button>
+    <script src="script.js"></script>
+</body>
+</html>

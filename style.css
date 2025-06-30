@@ -1,0 +1,394 @@
+:root {
+    --royal-blue: #0A1128; /* Deep dark blue */
+    --royal-gold: #FFD700; /* Gold */
+    --royal-silver: #C0C0C0; /* Silver/Light Gray */
+    --royal-gray-text: #E0E0E0; /* Lighter gray for text on dark bg */
+    --background-color: #F0F2F5; /* Very light subtle gray */
+    --text-color: #333333; /* Darker text for contrast on light bg */
+    --error-color: #DC3545; /* A standard red for errors */
+
+    --border-radius-large: 15px; /* More rounded */
+    --border-radius-small: 8px;
+    --button-padding: 14px 30px; /* Slightly larger buttons */
+    --font-family: 'Arial', sans-serif;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow: hidden; /* Prevent bounce on iOS */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+header {
+    background-color: var(--royal-blue);
+    color: var(--royal-gold); /* Gold header text */
+    padding: 10px 0;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15); /* Slightly stronger shadow */
+    font-size: 1.2em; /* Smaller header */
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+header h1 {
+    font-size: 1.3em; /* Smaller title */
+    margin: 0;
+}
+
+.lang-switch {
+    display: flex;
+    justify-content: flex-end;
+    gap: 6px;
+    margin-bottom: 4px;
+    padding-right: 12px;
+}
+
+.lang-btn {
+    background: var(--royal-silver);
+    color: var(--royal-blue);
+    border: none;
+    border-radius: var(--border-radius-small);
+    font-size: 0.9em;
+    font-weight: bold;
+    padding: 3px 10px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.lang-btn:hover, .lang-btn.active {
+    background: var(--royal-gold);
+    color: var(--royal-blue);
+}
+
+main {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.screen {
+    display: none;
+    width: 100%;
+    max-width: 350px; /* Smaller screens */
+    background-color: white;
+    padding: 18px 10px; /* Less padding */
+    border-radius: var(--border-radius-small);
+    font-size: 0.95em;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15); /* More pronounced, softer shadow */
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.screen.active {
+    display: block;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px; /* More space between elements */
+}
+
+.display-letter {
+    /* Let Tailwind handle font size/color/weight */
+}
+
+.display-letter.small {
+    /* Let Tailwind handle font size/color/weight */
+}
+
+.buttons {
+    display: flex;
+    gap: 10px; /* More space between buttons */
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    background-color: var(--royal-silver); /* Silver for default buttons */
+    color: var(--text-color);
+    border: none;
+    padding: 7px 14px;
+    border-radius: var(--border-radius-small); /* Rounded buttons */
+    font-size: 1em; /* Larger font for buttons */
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    min-width: 80px; /* Min width for buttons */
+    box-sizing: border-box;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.btn:hover {
+    background-color: #D3D3D3; /* Slightly darker silver */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.btn:active {
+    transform: translateY(2px); /* More pronounced press effect */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.btn.primary {
+    background-color: var(--royal-gold); /* Gold for primary buttons */
+    color: var(--royal-blue); /* Dark text on gold */
+}
+
+.btn.primary:hover {
+    background-color: #FFBF00; /* Slightly darker gold */
+}
+
+.promo-text {
+    font-size: 0.95em;
+    color: #666;
+    margin-top: 10px;
+    line-height: 1.6;
+}
+
+.category-display {
+    font-size: 1em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.category-display.important {
+    /* Let Tailwind handle font weight, color, bg, padding, border-radius */
+}
+
+/* Rules Popup */
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7); /* Darker overlay */
+    justify-content: center;
+    align-items: center;
+}
+
+.popup.active {
+    display: flex;
+}
+
+.popup-content {
+    background-color: #fefefe;
+    padding: 12px;
+    border-radius: var(--border-radius-small);
+    width: 90%;
+    max-width: 650px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+    text-align: left;
+    box-sizing: border-box;
+}
+
+.popup-content h2 {
+    text-align: center;
+    color: var(--royal-blue); /* Royal blue for popup heading */
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.popup-content p, .popup-content li {
+    font-size: 0.95em;
+    line-height: 1.6;
+}
+
+.popup-content ol {
+    list-style-type: decimal;
+    padding-left: 25px;
+    margin-bottom: 10px;
+}
+
+.popup-content li {
+    margin-bottom: 8px;
+}
+
+.popup-content .btn {
+    display: block;
+    margin: 10px auto 0;
+    font-size: 1em;
+    padding: 7px 14px;
+    background-color: var(--royal-gold);
+    color: var(--royal-blue);
+}
+.popup-content .btn:hover {
+    background-color: #FFBF00;
+}
+
+/* Player Setup Screen */
+.player-count-selection {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.player-count-btn {
+    flex: 1 1 calc(50% - 20px);
+    max-width: 110px;
+    font-size: 0.95em;
+    box-sizing: border-box;
+}
+@media (min-width: 480px) {
+    .player-count-btn {
+        flex: 1 1 auto;
+        min-width: unset;
+        width: 150px;
+    }
+}
+
+
+/* Gameplay Screen */
+#gameplay-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.player-turn-text {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: var(--royal-blue); /* Royal Blue for turn text */
+    margin-bottom: 6px;
+}
+
+.category-display {
+    font-size: 1em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+#word-input {
+    max-width: 180px;
+    padding: 7px 10px;
+    font-size: 1em;
+    border-radius: var(--border-radius-small);
+}
+
+.timer {
+    font-size: 1.2em;
+    margin: 8px 0;
+}
+
+.game-message {
+    font-size: 1em;
+    color: var(--error-color);
+    min-height: 18px; /* Reserve more space */
+    font-weight: bold;
+}
+
+/* Jail Screen */
+#jail-screen .display-message {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: var(--error-color);
+}
+
+#jail-screen .btn {
+    font-size: 1em;
+    padding: 7px 14px;
+    background-color: var(--royal-gold);
+    color: var(--royal-blue);
+}
+#jail-screen .btn:hover {
+    background-color: #FFBF00;
+}
+
+/* Hide spin buttons for number input (not strictly needed as we use text input) */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/* General responsiveness */
+@media (max-width: 400px) {
+    .btn {
+        padding: 6px 10px;
+        font-size: 0.95em;
+    }
+    .display-letter {
+        font-size: 2em;
+    }
+    .display-letter.small {
+        font-size: 1em;
+    }
+    .promo-text {
+        font-size: 0.9em;
+        margin-top: 8px;
+    }
+    .popup-content {
+        padding: 8px;
+    }
+    .popup-content h2 {
+        font-size: 1em;
+    }
+    .player-turn-text {
+        font-size: 1em;
+    }
+    .category-display {
+        font-size: 0.95em;
+    }
+    #word-input {
+        padding: 6px 8px;
+        font-size: 0.95em;
+    }
+    .timer {
+        font-size: 1em;
+    }
+    #jail-screen .display-message {
+        font-size: 1em;
+    }
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Tailwind custom animations */
+@layer utilities {
+    .animate-fade-in {
+        animation: fadeIn 0.5s ease;
+    }
+    .animate-fade-in-down {
+        animation: fadeInDown 0.5s ease;
+    }
+    .animate-fade-in-up {
+        animation: fadeInUp 0.5s ease;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    @keyframes fadeInDown {
+        from { opacity: 0; transform: translateY(-20px);}
+        to { opacity: 1; transform: translateY(0);}
+    }
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px);}
+        to { opacity: 1; transform: translateY(0);}
+    }
+}
